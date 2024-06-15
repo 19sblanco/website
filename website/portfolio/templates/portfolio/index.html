@@ -9,6 +9,8 @@
     {% bootstrap_javascript %}
 </head>
 <body>
+    {% load static %}
+    <img src="{% static 'portfolio/headshot.jpg' %}">
     {% include "base/navbar.html" %}
 
     <main>
