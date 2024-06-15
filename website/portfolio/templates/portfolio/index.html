@@ -9,8 +9,9 @@
     {% bootstrap_javascript %}
 </head>
 <body>
+
     {% load static %}
-    <img src="{% static 'portfolio/headshot.jpg' %}">
+    <img src="{% static 'portfolio/headshot.jpg' %}" class="rounded-circle mx-auto d-block" alt="Headshot" style="width: 20%;">
     {% include "base/navbar.html" %}
 
     <main>
