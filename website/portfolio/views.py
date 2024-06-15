@@ -4,6 +4,6 @@ from django.template import loader
 
 # Create your views here.
 def index(request):
-    template = loader.get_template("portfolio/index.html")
-    return HttpResponse(template.render(request))
+    context = {}
+    return render(request, "portfolio/index.html", context)
 
