@@ -7,3 +7,7 @@ def index(request):
     context = {}
     return render(request, "portfolio/index.html", context)
 
+def tsp(request):
+    context = {}
+    return render(request, "portfolio/tsp.html", context)
+
