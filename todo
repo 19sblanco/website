@@ -1,2 +1,6 @@
-* include photo of yourself
-* seperate nav bar code into own html file
+tsp page:
+    * make sure that tsp input for number of random cities is an integer and that integer is smaller than lets say 14
+    * spell check tsp
+
+start:
+    * you want to make the "show random cities" button on the tsp page print the list of random cities it generates so you can test it 
