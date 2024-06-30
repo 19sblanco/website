@@ -3,78 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tsp Demo</title>
-    <scirpt src="../../static/js/random_cities.js"></scirpt>
+    <title>Traveling Salesman Project</title>
     <style>
-        .right-side-div {
-            position: absolute; /* or fixed */
-            right: 0;
-            top: 0;
-            width: 50vh; /* Adjust the width as needed */
-            height: 50vh; /* Adjust the height as needed */
-            background-color: lightblue; /* Just for visual reference */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .content {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .canvas-container {
+            flex: 0 0 300px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        a {
+            color: #0066cc;
+        }
+        input, button {
+            margin: 5px 0;
+        }
+        .demo-controls {
+            margin-bottom: 1rem;
+        }
+        #errorMessage {
+            color: red;
         }
     </style>
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
 </head>
 <body>
-    <div class="container text-center">
-        <div class="row align-items-start">
-            <div class="col">
-                <h1>Welcome to my Traveling Salesman project</h1>
-                <p>insert github link here</p>
-                <p>
-                    This project is written in the C programming language. It used the backtracking algorithm.
-                </p>
-                <h2>Problem description</h2>
-                <p>
-                    For those unfamiliar the traveling salesman problem is a famous problem in computer science that states
-                    given the location of a set of cities, find the shortest route that visits every city exactly once and returns
-                    to the starting city. Here is a more indepth description of 
-                    <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">traveling salesman problem </a> the for those interested. 
-                    <br>
-                    <br>
-                    This problem is famous for being notoriously slow to solve with a computer because the only known way of solving it is to try out every possible
-                    path between the cities, meaning for N cities a computer would have to complete N <a target="_blank" href="https://en.wikipedia.org/wiki/Factorial">factorial</a> steps.
-                </p>
-                <h2>My process</h2>
-                <p>
-                    First I just familiarized myself with the problem description itself. I read the first section of the
-                    <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">wiki page</a> but not more.
-                    I wanted to come up with a solution by myself. After thinking about it for a while I came up with my solution. I later found out that
-                    the solution that I came up with is a common algoirthm used in computer science called backtracking.
-                    <br>
-                    <br>
-                    Backtracking is where all solutions for a problem is computed step by step recursively. You can read more about it <a href="https://www.geeksforgeeks.org/introduction-to-backtracking-2/">here</a>. 
-                    It is ideal for problems where there is no solution more effiecient than trying out everything.
-                </p>
-                <h2>Demo</h2>
-                <form>
-                    <label for="cites">Enter the Number of random cities</label><br>
-                    <input type="text" id="cities" name="cities"><br><br>
-                    <input type="button" value="show random cities" onclick="get_random_cities(5)"><br><br>
-                    <input type="button" value="show shortest path"><br><br>
-                </form>
-            </div>
-            <div class="col">
-                <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
-                    <script>
-                    var c = document.getElementById("myCanvas");
-                    var ctx = c.getContext("2d");
-                    ctx.moveTo(0, 0);
-                    ctx.lineTo(200, 100);
-                    ctx.stroke();
+    <h1>Welcome to my Traveling Salesman project</h1>
+    <p><a href="#">GitHub Link</a></p>
 
-                    ctx.fillRect(10,10,10,10); // fill in the pixel at (10,10)
-                    </script>
-                </canvas>
+    <div class="container">
+        <div class="content">
+            <p>This C project uses the backtracking algorithm to solve the Traveling Salesman Problem.</p>
+
+            <h2>Problem Description</h2>
+            <p>
+                The Traveling Salesman Problem involves finding the shortest route that visits every city exactly once and returns to the starting point. Learn more about the 
+                <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">traveling salesman problem </a> 
+            </p>
+
+            <p>
+                This problem is notoriously slow to solve as it requires checking every possible path between cities, resulting in N factorial steps for N cities.
+            </p>
+
+            <h2>My Process</h2>
+            <p>
+                I familiarized myself with the problem through the 
+                <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">wiki page,</a> 
+                then developed my own solution through my own reasoning and understanding of programming. I later found out that the method I used is called backtracking, a common algorithm in computer science.
+            </p>
+
+            <p>Backtracking computes solutions recursively. Read more about it 
+                <!-- <a href="#">here</a> -->
+                <a href="https://www.geeksforgeeks.org/introduction-to-backtracking-2/">here.</a>
+                It's ideal for problems where exhaustive search is inefficient.
+            </p>
+
+            <h2>Demo</h2>
+            <p>Follow these steps to see the Traveling Salesman algorithm in action:</p>
+            <ol>
+                <li>Enter a number between 2 and 14 in the input field below. This represents the number of cities.</li>
+                <li>Click "Show random cities" to display the cities on the map.</li>
+                <li>Click "Show shortest path" to see the optimal route.</li>
+            </ol>
+            <div class="demo-controls">
+                <label for="cityCount">Number of cities (2-14):</label>
+                <input type="number" id="cityCount" min="2" max="14" placeholder="Enter a number">
+                <button onclick="showRandomCities()">Show random cities</button>
+                <button onclick="showShortestPath()">Show shortest path</button>
             </div>
+            <p id="errorMessage"></p>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="tspCanvas" width="500" height="500" style="border:1px solid #000000;">
+            </canvas>
         </div>
     </div>
 
+    <script>
+        function validateInput() {
+            const cityCountInput = document.getElementById('cityCount');
+            const errorMessage = document.getElementById('errorMessage');
+            const cityCount = parseInt(cityCountInput.value);
 
+            if (isNaN(cityCount)) {
+                errorMessage.textContent = "Please enter a valid number.";
+                return false;
+            }
 
+            if (cityCount < 2 || cityCount > 14) {
+                errorMessage.textContent = "Please enter a number between 2 and 14.";
+                return false;
+            }
+
+            errorMessage.textContent = ""; // Clear any previous error messages
+            return true;
+        }
+
+        function showRandomCities() {
+            if (validateInput()) {
+                // Add your logic to show random cities
+                console.log("Showing random cities");
+            }
+        }
+
+        function showShortestPath() {
+            if (validateInput()) {
+                // Add your logic to show the shortest path
+                console.log("Showing shortest path");
+            }
+        }
+    </script>
 </body>
 </html>
