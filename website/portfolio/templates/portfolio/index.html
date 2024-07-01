@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Steven Blanco</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -17,7 +18,6 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="https://github.com/19sblanco" target="_blank">Github</a></li>
             </ul>
         </nav>
     </header>
@@ -38,8 +38,24 @@
                 </section>
 
                 <section id="contact">
-                    <h2>Contact Me</h2>
-                    <!-- Add your contact form or information here -->
+                    <section id="contact">
+                        <h2>Contact Me</h2>
+                        <div class="contact-card">
+                            <div class="contact-info">
+                                <h4>Steven Blanco</h4>
+                                <p><i class="fas fa-envelope"></i> Steven_blanc521@gmail.com</p>
+                                <p><i class="fas fa-map-marker-alt"></i> Bountiful, Utah, United States</p>
+                            </div>
+                            <div class="contact-links">
+                                <a href="https://github.com/19sblanco" target="_blank" class="contact-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <a href="https://www.linkedin.com/in/steven-blanco-b69553199" target="_blank" class="contact-link">
+                                    <i class="fab fa-linkedin"></i> LinkedIn
+                                </a>
+                            </div>
+                        </div>
+                    </section>
                 </section>
             </main>
         </div>
