@@ -1,15 +1,13 @@
-<nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-    <div class="position-sticky pt-3">
+<aside class="sidebar">
+    <div class="sidebar-content">
         {% load static %}
-        <img src="{% static 'portfolio/headshot.jpg' %}" alt="Steven Blanco" class="profile-img mx-auto d-block">
-        <h5 class="text-center mb-3">Projects</h5>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="https://github.com/19sblanco/website">This website</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/tsp">Traveling Salesman</a>
-            </li>
-        </ul>
+        <img src="{% static 'portfolio/headshot.jpg' %}" alt="Steven Blanco" class="profile-img">
+        <h2 class="sidebar-title">Projects</h2>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="https://github.com/19sblanco/website" class="active">This website</a></li>
+                <li><a href="/tsp">Traveling Salesman</a></li>
+            </ul>
+        </nav>
     </div>
-</nav>
+</aside>

@@ -4,95 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveling Salesman Project</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .content {
-            flex: 1;
-            padding-right: 20px;
-        }
-        .canvas-container {
-            flex: 0 0 300px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        a {
-            color: #0066cc;
-        }
-        input, button {
-            margin: 5px 0;
-        }
-        .demo-controls {
-            margin-bottom: 1rem;
-        }
-        #errorMessage {
-            color: red;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/style.css">
 </head>
 <body>
-    <h1>Welcome to my Traveling Salesman project</h1>
-    <p><a href="#">GitHub Link</a></p>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#process">Process</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container">
-        <div class="content">
-            <p>This C project uses the backtracking algorithm to solve the Traveling Salesman Problem.</p>
+        <div class="content-wrapper">
+            {% include "base/sidebar.html" %}
 
-            <h2>Problem Description</h2>
-            <p>
-                The Traveling Salesman Problem involves finding the shortest route that visits every city exactly once and returns to the starting point. Learn more about the 
-                <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">traveling salesman problem </a> 
-            </p>
+            <main class="content">
+                <h1 id="home">Welcome to my Traveling Salesman project</h1>
+                <p><a href="#">GitHub Link</a></p>
 
-            <p>
-                This problem is notoriously slow to solve as it requires checking every possible path between cities, resulting in N factorial steps for N cities.
-            </p>
+                <div class="tsp-wrapper">
+                    <div class="canvas-container" id="demo">
+                        <h2>Interactive Demo</h2>
+                        <canvas id="tspCanvas" width="600" height="400"></canvas>
+                        <div class="demo-controls">
+                            <label for="cityCount">Number of cities (2-14):</label>
+                            <input type="number" id="cityCount" min="2" max="14" placeholder="Enter a number">
+                            <button onclick="showRandomCities()">Show random cities</button>
+                            <button onclick="showShortestPath()">Show shortest path</button>
+                        </div>
+                        <p id="errorMessage"></p>
+                    </div>
 
-            <h2>My Process</h2>
-            <p>
-                I familiarized myself with the problem through the 
-                <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">wiki page,</a> 
-                then developed my own solution through my own reasoning and understanding of programming. I later found out that the method I used is called backtracking, a common algorithm in computer science.
-            </p>
+                    <div class="content">
+                        <h2 id="problem">Problem Description</h2>
+                        <p>
+                            The Traveling Salesman Problem involves finding the shortest route that visits every city exactly once and returns to the starting point. Learn more about the 
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">traveling salesman problem</a>.
+                        </p>
 
-            <p>Backtracking computes solutions recursively. Read more about it 
-                <!-- <a href="#">here</a> -->
-                <a href="https://www.geeksforgeeks.org/introduction-to-backtracking-2/">here.</a>
-                It's ideal for problems where exhaustive search is inefficient.
-            </p>
+                        <p>
+                            This problem is notoriously slow to solve as it requires checking every possible path between cities, resulting in N factorial steps for N cities.
+                        </p>
 
-            <h2>Demo</h2>
-            <p>Follow these steps to see the Traveling Salesman algorithm in action:</p>
-            <ol>
-                <li>Enter a number between 2 and 14 in the input field below. This represents the number of cities.</li>
-                <li>Click "Show random cities" to display the cities on the map.</li>
-                <li>Click "Show shortest path" to see the optimal route.</li>
-            </ol>
-            <div class="demo-controls">
-                <label for="cityCount">Number of cities (2-14):</label>
-                <input type="number" id="cityCount" min="2" max="14" placeholder="Enter a number">
-                <button onclick="showRandomCities()">Show random cities</button>
-                <button onclick="showShortestPath()">Show shortest path</button>
-            </div>
-            <p id="errorMessage"></p>
-        </div>
+                        <h2 id="process">My Process</h2>
+                        <p>
+                            I familiarized myself with the problem through the 
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">wiki page,</a> 
+                            then developed my own solution through my own reasoning and understanding of programming. I later found out that the method I used is called backtracking, a common algorithm in computer science.
+                        </p>
 
-        <div class="canvas-container">
-            <canvas id="tspCanvas" width="500" height="500" style="border:1px solid #000000;">
-            </canvas>
+                        <p>Backtracking computes solutions recursively. Read more about it 
+                            <a href="https://www.geeksforgeeks.org/introduction-to-backtracking-2/">here.</a>
+                            It's ideal for problems where exhaustive search is inefficient.
+                        </p>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio</p>
+    </footer>
 
     <script>
         function validateInput() {
@@ -128,5 +106,6 @@
             }
         }
     </script>
+
 </body>
 </html>
