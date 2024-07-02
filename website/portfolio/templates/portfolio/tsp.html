@@ -111,12 +111,9 @@
             if (validateInput()) {
                 clearCanvas();
 
-                // Add your logic to show random cities
-                console.log("Showing random cities");
                 var count = parseInt(document.getElementById("cityCount").value);
                 points = get_random_cities(count);
 
-                // display points
                 for (var i = 0; i < count; i++) {
                     var x = points[i].x;
                     var y = points[i].y;
@@ -126,31 +123,21 @@
         }
 
         /*
-        clear the canvas 
-        */
-       function clearCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            points = [];
-       }
-        
-        /*
-        draw a point given the coordinates
-        */
-        function drawPoint(ctx, x, y) {
-            var size = 8;
-            ctx.fillStyle = "red";
-            ctx.fillRect(x, y, size, size);
-        }
-
-        /*
         display the shortest path on the canvas html element
         */
         function showShortestPath() {
             if (validateInput()) {
-                // Add your logic to show the shortest path
-                console.log("Showing shortest path");
+                if (points.length == 0) {
+                    showRandomCities();
+                }
+
+                // display something to show the use that its computing
+                // make an ajax request to backend tsp program
+                const queryString = points.map(point => `points[]=${point.x},${point.y}`).join('&');
+                console.log(queryString);
+                // have it return the lines in the form of json
+                    // lines (js objects) with a starting point and an ending point
             }
-            // todo if there are no cities, first call showRandomCities()
         }
 
         /*
@@ -168,6 +155,23 @@
                 points.push(point);
             }
             return points;
+        }
+
+        /*
+        clear the canvas 
+        */
+       function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            points = [];
+       }
+        
+        /*
+        draw a point given the coordinates
+        */
+        function drawPoint(ctx, x, y) {
+            var size = 8;
+            ctx.fillStyle = "red";
+            ctx.fillRect(x, y, size, size);
         }
     </script>
 
