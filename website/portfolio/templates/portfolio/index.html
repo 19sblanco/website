@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steven Blanco</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Steven Blanco</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../../static/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <div class="container">
-        <div class="content-wrapper">
-            {% include "base/sidebar.html" %}
+        <div class="container">
+            <div class="content-wrapper">
+                {% include "base/sidebar.html" %}
 
-            <main class="content">
-                <section id="home">
-                    <h1>Welcome to My Portfolio</h1>
-                </section>
-
-                <section id="about">
-                    <h2>About Me</h2>
-                    <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-                </section>
-
-                <section id="contact">
-                    <section id="contact">
-                        <h2>Contact Me</h2>
-                        <div class="contact-card">
-                            <div class="contact-info">
-                                <h4>Steven Blanco</h4>
-                                <p><i class="fas fa-envelope"></i> Steven_blanc521@gmail.com</p>
-                                <p><i class="fas fa-map-marker-alt"></i> Bountiful, Utah, United States</p>
-                            </div>
-                            <div class="contact-links">
-                                <a href="https://github.com/19sblanco" target="_blank" class="contact-link">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                                <a href="https://www.linkedin.com/in/steven-blanco-b69553199" target="_blank" class="contact-link">
-                                    <i class="fab fa-linkedin"></i> LinkedIn
-                                </a>
-                            </div>
-                        </div>
+                <main class="content">
+                    <section id="home">
+                        <h1>Welcome to My Portfolio</h1>
                     </section>
-                </section>
-            </main>
-        </div>
-    </div>
 
-    <footer>
-        <p>&copy; 2024 My Portfolio</p>
-    </footer>
-</body>
+                    <section id="about">
+                        <h2>About Me</h2>
+                        <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+                    </section>
+
+                    <section id="contact">
+                        <section id="contact">
+                            <h2>Contact Me</h2>
+                            <div class="contact-card">
+                                <div class="contact-info">
+                                    <h4>Steven Blanco</h4>
+                                    <p><i class="fas fa-envelope"></i> Steven_blanc521@gmail.com</p>
+                                    <p><i class="fas fa-map-marker-alt"></i> Bountiful, Utah, United States</p>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="https://github.com/19sblanco" target="_blank" class="contact-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/steven-blanco-b69553199" target="_blank" class="contact-link">
+                                        <i class="fab fa-linkedin"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 My Portfolio</p>
+        </footer>
+    </body>
 </html>
