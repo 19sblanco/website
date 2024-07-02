@@ -108,7 +108,10 @@
                 // Add your logic to show random cities
                 console.log("Showing random cities");
                 var count = parseInt(document.getElementById("cityCount").value);
-                get_random_cities(count);
+                var points = get_random_cities(count);
+
+                // display points
+
             }
         }
 
@@ -137,9 +140,6 @@
                 let point = { x: x, y: y }; 
                 points.push(point);
             }
-            console.log();
-            console.log(points);
-            console.log();
             return points;
         }
     </script>
