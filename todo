@@ -1,6 +1,7 @@
-tsp page:
-    * make sure that tsp input for number of random cities is an integer and that integer is smaller than lets say 14
-    * spell check tsp
-
 start:
-    * you want to make the "show random cities" button on the tsp page print the list of random cities it generates so you can test it 
+    * you are now in views
+    * you want to give the points to the c program
+    * you will have to change the c program so that the arguments of the program (in the command line) are the points
+    * you want the c program to output a path of the points which is list of indexes of the points ex) [0,3,4,2,1,0] these indexes are the indexes of the javascript list in tsp which is the var points
+
+spell check all pages and fix english
