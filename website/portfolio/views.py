@@ -23,5 +23,6 @@ def tsp_c(request):
         points.append((int(x), int(y)))
     
     print(points)
+    #
 
 
