@@ -81,6 +81,10 @@
     </footer>
 
     <script>
+        var points = [];
+        const canvas = document.getElementById("tspCanvas");
+        const ctx = canvas.getContext("2d");
+
         function validateInput() {
             const cityCountInput = document.getElementById('cityCount');
             const errorMessage = document.getElementById('errorMessage');
@@ -105,14 +109,37 @@
         */
         function showRandomCities() {
             if (validateInput()) {
+                clearCanvas();
+
                 // Add your logic to show random cities
                 console.log("Showing random cities");
                 var count = parseInt(document.getElementById("cityCount").value);
-                var points = get_random_cities(count);
+                points = get_random_cities(count);
 
                 // display points
-
+                for (var i = 0; i < count; i++) {
+                    var x = points[i].x;
+                    var y = points[i].y;
+                    drawPoint(ctx, x, y);
+                }
             }
+        }
+
+        /*
+        clear the canvas 
+        */
+       function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            points = [];
+       }
+        
+        /*
+        draw a point given the coordinates
+        */
+        function drawPoint(ctx, x, y) {
+            var size = 8;
+            ctx.fillStyle = "red";
+            ctx.fillRect(x, y, size, size);
         }
 
         /*
