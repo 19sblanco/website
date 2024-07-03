@@ -19,7 +19,7 @@ void print_cities(city* cities, int* order, int n) {
     for (int i = 0; i < n; i++) {
         city c = cities[order[i]-1];
         if (i == (n-1)) {
-            printf("(%f, %f)", c.x, c.y);
+            printf("(%f, %f)\n", c.x, c.y);
         }
         else {
             printf("(%f, %f) -> ", c.x, c.y);
@@ -94,24 +94,6 @@ void _copy(int* original, int* new, int n) {
 }
 
 /*
-void random_cities(city* cities, int n, double threshold) {
-    srand(time(NULL));
-    int x, y, in_range;
-    city c;
-    for (int i = 0; i < n; i++) {
-        while (1) {
-            x = rand();
-            y = rand();
-            c = make_city(x, y);
-            in_range = within_range(cities, i, c, threshold);
-            if (in_range == 0) {
-                break;
-            }
-        }
-        cities[i] = c;
-    }
-}
-
 given the program arguments of the city coordiantes
 return a list of cities structs
 */

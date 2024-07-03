@@ -1,7 +1,10 @@
 start:
-    * you are now in views
-    * you want to give the points to the c program
-    * you will have to change the c program so that the arguments of the program (in the command line) are the points
-    * you want the c program to output a path of the points which is list of indexes of the points ex) [0,3,4,2,1,0] these indexes are the indexes of the javascript list in tsp which is the var points
+    tsp
+        * in views you want to call the c program with the arguments variable
+        * the c program can now take program arguemnts in the format that is outputed by the arguemnts variable in the views.py page
+        * you want to create the correct cities and be able to print them with the following two functions
+            * print_cities() and _get_cities()
+
+    resume: add this section
 
 spell check all pages and fix english
