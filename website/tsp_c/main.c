@@ -30,14 +30,25 @@ tsp_C:
 traveling salesman 
 n - number of cities (make sure get cities matches this)
 */
-int main() { 
-    int n = input_random_cities();
-    double threshold = 1.0;
+int main(int argc, char* argv[]) { 
+    if (argc < 2) {
+        printf("Usage: %s <num1>,<num2> [<num3>,<num4> ...]\n", argv[0]);
+        return 1;
+    }
+
+    int n = argc-1; // -1 to account for program name as argument
 
     clock_t start, end;
     start = clock();
     city cities[n];
-    random_cities(cities, n, threshold);
+    _get_cities(argc, argv, cities);
+    int order[] = {0, 1, 2, 3};
+    print_cities(cities, order, 4);
+    exit(0);
+    
+
+// void _get_cities(int argc, char* argv[], city* cities) {
+
     double rdistance = 0.0;
     int rpath[n];
     tsp(&rdistance, rpath, cities, n);

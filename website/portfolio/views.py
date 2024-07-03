@@ -22,7 +22,17 @@ def tsp_c(request):
         x, y = point_str.strip('()=').split(',')
         points.append((int(x), int(y)))
     
+    print()
     print(points)
-    #
+    print()
+
+    # prepare arguments
+    arguments = ""
+    for p in points:
+        arguments += str(p[0]) + "," + str(p[1]) + " "
+    print()
+    print(arguments)
+    print()
+
 
 

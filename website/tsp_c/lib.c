@@ -1,5 +1,6 @@
 #include <math.h>
 #include <time.h>
+#include <string.h>
 
 
 typedef struct {
@@ -89,6 +90,49 @@ copy an array of size n
 void _copy(int* original, int* new, int n) {
     for (int i = 0; i < n; i++) {
         new[i] = original[i];
+    }
+}
+
+/*
+void random_cities(city* cities, int n, double threshold) {
+    srand(time(NULL));
+    int x, y, in_range;
+    city c;
+    for (int i = 0; i < n; i++) {
+        while (1) {
+            x = rand();
+            y = rand();
+            c = make_city(x, y);
+            in_range = within_range(cities, i, c, threshold);
+            if (in_range == 0) {
+                break;
+            }
+        }
+        cities[i] = c;
+    }
+}
+
+given the program arguments of the city coordiantes
+return a list of cities structs
+*/
+void _get_cities(int argc, char* argv[], city* cities) {
+    for (int i = 1; i < argc; i++) {
+        char* str = argv[i];
+        char* token = strtok(str, ",");
+        
+        if (token != NULL) {
+            double first_num = (double)atoi(token);
+            token = strtok(NULL, ",");
+            
+            if (token != NULL) {
+                double second_num = (double)atoi(token);
+                cities[i] = make_city(first_num, second_num);
+            } else {
+                printf("Invalid format for string %d\n", i);
+            }
+        } else {
+            printf("Invalid format for string %d\n", i);
+        }
     }
 }
 
