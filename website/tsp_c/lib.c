@@ -108,7 +108,9 @@ void _get_cities(int argc, char* argv[], city* cities) {
             
             if (token != NULL) {
                 double second_num = (double)atoi(token);
-                cities[i] = make_city(first_num, second_num);
+                printf("String %d: First number = %f, Second number = %f\n", i, first_num, second_num);
+       
+                cities[i-1] = make_city(first_num, second_num);
             } else {
                 printf("Invalid format for string %d\n", i);
             }

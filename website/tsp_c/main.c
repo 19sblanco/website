@@ -42,13 +42,6 @@ int main(int argc, char* argv[]) {
     start = clock();
     city cities[n];
     _get_cities(argc, argv, cities);
-    int order[] = {0, 1, 2, 3};
-    print_cities(cities, order, 4);
-    exit(0);
-    
-
-// void _get_cities(int argc, char* argv[], city* cities) {
-
     double rdistance = 0.0;
     int rpath[n];
     tsp(&rdistance, rpath, cities, n);
