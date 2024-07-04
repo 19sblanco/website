@@ -146,17 +146,13 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log("Sucess:", data);
+                    // todo draw lines
+                    // dislay the distance
+                    // display the cpu_time
                 })
                 .catch((error) => {
                     console.error("Error:", error);
                 });
-                // have it return the lines in the form of json
-                /*have c program return an string of an array that contains the order 
-                [0,5,3,4,1,2,0]
-                that order is the indexes of the points in the array in javascript
-
-                */
-                    // lines (js objects) with a starting point and an ending point
             }
         }
 
@@ -193,6 +189,13 @@
             ctx.fillStyle = "red";
             ctx.fillRect(x, y, size, size);
         }
+
+        /*
+        draw lines between each point in points
+        */
+       function drawLines(points) {
+
+       }
     </script>
 
 </body>
