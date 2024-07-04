@@ -15,17 +15,22 @@ city make_city(double x, double y) {
     return c;
 }
 
-void print_cities(city* cities, int* order, int n) {
-    for (int i = 0; i < n; i++) {
-        city c = cities[order[i]-1];
-        if (i == (n-1)) {
-            printf("(%f, %f)\n", c.x, c.y);
-        }
-        else {
-            printf("(%f, %f) -> ", c.x, c.y);
-        }
-    }
 
+void print_cities(city* cities, int* order, int n) {
+    printf("'points': [\n");
+    for (int i = 0; i < n; i++) {
+        city c = cities[order[i]];
+        printf("{\n'x':%f,\n'y':%f\n},", c.x, c.y);
+    }
+    city c = cities[order[0]];
+    printf("{\n'x':%f,\n'y':%f\n}", c.x, c.y);
+    printf("],\n");
+}
+
+void print_output(double rdistance, city* cities, int* rpath, int n, double cpu_time_used) {
+    printf("{ 'distance': %f,\n", rdistance);
+    print_cities(cities, rpath, n);
+    printf("'cpu_time': %f}\n", cpu_time_used);
 }
 
 void print_array(int* arr, int n) {
@@ -108,7 +113,7 @@ void _get_cities(int argc, char* argv[], city* cities) {
             
             if (token != NULL) {
                 double second_num = (double)atoi(token);
-                printf("String %d: First number = %f, Second number = %f\n", i, first_num, second_num);
+                // printf("String %d: First number = %f, Second number = %f\n", i, first_num, second_num);
        
                 cities[i-1] = make_city(first_num, second_num);
             } else {

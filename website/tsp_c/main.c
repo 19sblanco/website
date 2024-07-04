@@ -51,11 +51,7 @@ int main(int argc, char* argv[]) {
     double distances[n*n];
     get_distances(distances, cities, n);
 
-    printf("=== output ===\n");
-    printf("distance: %f\npath: ", rdistance);
-    print_cities(cities, rpath, n);
-    print_distances(distances, n);
-    printf("Time used: %f seconds\n", cpu_time_used);
+    print_output(rdistance, cities, rpath, n, cpu_time_used);
     return 0; 
 }
 
