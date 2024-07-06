@@ -40,6 +40,11 @@
                             <button onclick="showRandomCities()">Show random cities</button>
                             <button onclick="showShortestPath()">Show shortest path</button>
                         </div>
+                        <div id="results" class="results-container" style="display: none;">
+                            <h3>Results:</h3>
+                            <p>Shortest Path Distance: <span id="distanceResult"></span></p>
+                            <p>CPU Time: <span id="cpuTimeResult"></span> seconds</p>
+                        </div>
                         <p id="errorMessage"></p>
                     </div>
 
@@ -110,6 +115,8 @@
         function showRandomCities() {
             if (validateInput()) {
                 clearCanvas();
+                document.getElementById('results').style.display = 'none'; // Hide results
+
 
                 var count = parseInt(document.getElementById("cityCount").value);
                 points = get_random_cities(count);
@@ -131,8 +138,6 @@
                     showRandomCities();
                 }
 
-                // display something to show the use that its computing
-                // make an ajax request to backend tsp program
                 const queryString = points.map(point => `(${point.x},${point.y})`).join('&');
                 const url = `/tsp_c?${queryString}`;
 
@@ -148,11 +153,12 @@
                     cpu_time = data.cpu_time;
                     distance = data.distance;
                     points = data.points;
-                    console.log(cpu_time );
-                    console.log(distance );
                     drawLines(points);
                     // todo dislay the distance
                     // todo display the cpu_time
+                    document.getElementById('distanceResult').textContent = distance.toFixed(2);
+                    document.getElementById('cpuTimeResult').textContent = cpu_time.toFixed(6);
+                    document.getElementById('results').style.display = 'block';
                 })
                 .catch((error) => {
                     console.error("Error:", error);
@@ -191,7 +197,7 @@
         function drawPoint(ctx, x, y) {
             var size = 8;
             ctx.fillStyle = "red";
-            ctx.fillRect(x, y, size, size);
+            ctx.fillRect(x-(size/2), y-(size-2), size, size);
         }
 
         /*
