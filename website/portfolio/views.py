@@ -42,6 +42,3 @@ def tsp_c(request):
     except subprocess.CalledProcessError as e:
         print(f"Enter running C program: {e}")
         return None
-
-
-
