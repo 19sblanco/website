@@ -1,10 +1,9 @@
 start:
-    tsp
-        * in views you want to call the c program with the arguments variable
-        * the c program can now take program arguemnts in the format that is outputed by the arguemnts variable in the views.py page
-        * you want to create the correct cities and be able to print them with the following two functions
-            * print_cities() and _get_cities()
+    tsp.html: <todo>
 
     resume: add this section
+
+    side bar: unhighlight "this website"
+
 
 spell check all pages and fix english

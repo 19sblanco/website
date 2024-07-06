@@ -145,10 +145,14 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Sucess:", data);
-                    // todo draw lines
-                    // dislay the distance
-                    // display the cpu_time
+                    cpu_time = data.cpu_time;
+                    distance = data.distance;
+                    points = data.points;
+                    console.log(cpu_time );
+                    console.log(distance );
+                    drawLines(points);
+                    // todo dislay the distance
+                    // todo display the cpu_time
                 })
                 .catch((error) => {
                     console.error("Error:", error);
@@ -193,9 +197,17 @@
         /*
         draw lines between each point in points
         */
-       function drawLines(points) {
+        function drawLines(points) {
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            
+            for (let i = 1; i < points.length; i++) {
+                ctx.lineTo(points[i].x, points[i].y);
+            }
+            
+            ctx.stroke();
+        }
 
-       }
     </script>
 
 </body>
