@@ -7,42 +7,24 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../../static/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        {% load bootstrap5 %}
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
     </head>
     <body>
         <header>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://github.com/19sblanco/website" class="active" target="_blank">This website</a></li>
+                    <li><a href="/tsp" class="active">Traveling Salesman</a></li>
                 </ul>
             </nav>
         </header>
+        <h1>Welcome to My Portfolio</h1>
 
         <div class="container">
             <div class="content-wrapper">
-                {% include "base/sidebar.html" %}
-
                 <main class="content">
                     <section id="home">
-                        <h1>Welcome to My Portfolio</h1>
-                        <p>I'm Steven Blanco, a versatile software engineer ready to bring your ideas to life. With a strong foundation in computer science and a passion for problem-solving. I invite you too look at my interactive projects listed on the left hand side of this webpage</p>
-                    </section>
-
-                    <section id="about">
-                        <h2>About Me</h2>
-                        <p>My experience spans a wide range of software development areas, including:</p>
-                        <ul>
-                            <li>Designing and implementing full-stack projects (e.g., model and controller components of a Learning Management System)</li>
-                            <li>Working with large datasets and completing data science projects</li>
-                            <li>Crafting efficient algorithms in low-level languages</li>
-                        </ul>
-                        <p>This diverse background allows me to tackle complex challenges and derive valuable insights across various domains of software engineering.</p>
-
-                        <p>As a freelance software engineer, I'm committed to delivering tailored solutions that meet your specific needs. My background in agile methodologies and collaborative development ensures clear communication and timely project delivery. I'm eager to apply my skills and passion for coding to help turn your software concepts into reality.</p>
+                        <p>My name is Steven Blanco and here is my personal website to showcase some of my work. I'm a hobbiest programmer and these are some of the projects that I've done in my free time. So far I just have the traveling salesman problem but I intented to include more. <br><br> I invite you to checkout my traveling salesman problem link in the navigation above. There you will find a cool little demo of a famous computer science problem written in C.</p>
                     </section>
 
                     <section id="contact">
@@ -52,7 +34,7 @@
                                 <div class="contact-info">
                                     <h4>Steven Blanco</h4>
                                     <p><i class="fas fa-envelope"></i> Steven_blanc521@gmail.com</p>
-                                    <p><i class="fas fa-map-marker-alt"></i> Bountiful, Utah, United States</p>
+                                    <p><i class="fas fa-map-marker-alt"></i> Utah, United States</p>
                                 </div>
                                 <div class="contact-links">
                                     <a href="https://github.com/19sblanco" target="_blank" class="contact-link">

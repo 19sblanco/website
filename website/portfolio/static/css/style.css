@@ -27,6 +27,13 @@ header {
     padding: 1rem 0;
 }
 
+nav h1 {
+    margin: 0;
+    color: white; /* Ensures the title is visible on a dark background */
+    text-align: center; /* Centers the title text */
+    padding-bottom: 1rem; /* Adds some space below the title */
+}
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -54,69 +61,9 @@ a {
 
 .content-wrapper {
     display: flex;
-    gap: 2rem;
-}
-
-.sidebar {
-    flex: 0 0 250px;
-    background-color: var(--secondary-color);
-    padding: 1rem;
-    border-radius: 8px;
-    color: white;
-}
-
-.sidebar-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.sidebar-title {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.sidebar-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.sidebar-nav li {
-    margin-bottom: 0.5rem;
-    width: 100%;
-}
-
-.sidebar-nav a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    text-align: center;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-    background-color: var(--primary-color);
 }
 
 .content {
-    flex: 1;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.profile-img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 1rem;
 }
 
 section {
@@ -137,12 +84,24 @@ footer {
 }
 
 /* TSP specific styles */
+.tsp-title {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+
+.github-button-container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
 .github-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
-    margin-bottom: 20px;
+    padding: 8px 20px;
     background-color: #24292e; /* GitHub's color */
     color: white;
     text-decoration: none;
@@ -227,9 +186,9 @@ button:hover {
         flex-direction: column;
     }
     
-    .sidebar {
+    /* .sidebar {
         order: -1;
-    }
+    } */
 }
 
 /* Contact card styles */
