@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - pip install -r requirements.txt
+    build:
+      commands:
+        - cd website
+        - python3 manage.py collectstatic --noinput
+        - python3 manage.py migrate
+  artifacts:
+    baseDirectory: /
+    files:
+      - '**/*'
+  cache:
+    paths: []
