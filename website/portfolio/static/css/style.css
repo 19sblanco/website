@@ -87,9 +87,7 @@ footer {
 .tsp-title {
     display: flex;
     justify-content: center;
-    margin: 2rem 0;
 }
-
 
 .github-button-container {
     display: flex;
@@ -132,13 +130,17 @@ footer {
     height: 20px;
 }
 
+.content h2 {
+    text-align: center;
+}
+
 .tsp-wrapper {
     flex-direction: column;
     align-items: center;
 }
 
 .canvas-container {
-    margin: 2rem 0;
+    /* margin: 2rem 0; */
     text-align: center;
 }
 
