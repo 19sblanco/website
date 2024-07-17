@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body>
-        <header>
+        <!-- <header>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -17,18 +17,37 @@
                     <li><a href="/tsp" class="active">Traveling Salesman</a></li>
                 </ul>
             </nav>
-        </header>
+        </header> -->
+
         <div class="title">
             <h1>Welcome to My Portfolio</h1>
         </div>
 
-        <!-- {% include "base/sidebar.html" %} -->
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Projects</a>
+                    <div class="dropdown-content">
+                        <a href="/tsp">Traveling Salesman</a>
+                    </div>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">GitHub Links</a>
+                    <div class="dropdown-content">
+                        <a href="https://github.com/19sblanco/website" target="_blank">This website</a>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
 
         <div class="container">
             <div class="content-wrapper">
                 <main class="content">
                     <section id="home">
-                        <p>My name is Steven Blanco and here is my personal website to showcase some of my work. I'm a hobbiest programmer and these are some of the projects that I've done in my free time. So far I just have the traveling salesman problem but I intented to include more. <br><br> I invite you to checkout my traveling salesman problem link in the navigation above. There you will find a cool little demo of a famous computer science problem written in C.</p>
+                        <p>My name is Steven Blanco and here is my personal website to showcase some of my work. I'm a hobbiest programmer who is looking to land a job. One the navigation bar at the top of the webpage there is some of the projects that I've completed in my free time. So far I just have the traveling salesman problem but I intented to include more. <br><br> I invite you to checkout my traveling salesman problem link in the navigation above. There you will find a cool little demo of a famous computer science problem written in C.</p>
                     </section>
 
                     <section id="contact">
