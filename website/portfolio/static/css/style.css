@@ -59,9 +59,23 @@ nav ul li a {
     transition: background-color 0.3s;
 }
 
-nav ul li a:hover,
-nav ul li a:focus {
+nav ul li a:hover {
     background-color: var(--primary-color);
+}
+nav ul li a:focus {
+    outline: none;
+}
+
+.dropdown .dropbtn:focus {
+    background-color: transparent;
+}
+
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .sidebar {
