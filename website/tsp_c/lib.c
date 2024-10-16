@@ -1,20 +1,24 @@
 #include <math.h>
 #include <time.h>
+#include <float.h>
 #include <string.h>
 
-
-typedef struct {
+/*
+Cities and distances
+*/
+typedef struct
+{
     double x;
     double y;
 } city;
 
-city make_city(double x, double y) {
+city make_city(double x, double y)
+{
     city c;
     c.x = x;
     c.y = y;
     return c;
 }
-
 
 void print_cities(city* cities, int* order, int n) {
     printf("'points': [\n");
@@ -31,71 +35,6 @@ void print_output(double rdistance, city* cities, int* rpath, int n, double cpu_
     printf("{ 'distance': %f,\n", rdistance);
     print_cities(cities, rpath, n);
     printf("'cpu_time': %f}\n", cpu_time_used);
-}
-
-void print_array(int* arr, int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%d, ", arr[i]);
-    }
-    printf("\n");
-}
-
-double get_distance(city c1, city c2) {
-    return pow( pow(c1.x-c2.x, 2) + pow(c1.y-c2.y, 2), .5);
-}
-
-void get_distances(double*  distances, city* cities, int n) {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            double dist = get_distance(cities[i], cities[j]);
-            distances[(i*n)+j] = dist;
-        }
-    }
-}
-
-void print_distances(double* distances, int n) {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%f ", distances[(i*n)+j]);
-        }
-        printf("\n\n");
-    }
-}
-
-/*
-remove an item from an array where n is the size of original
-*/
-void _remove(int* original, int* new, int item, int n) {
-    int j = 0;
-    for (int i = 0; i < n; i++) {
-        if (original[i] == item) {
-            continue;
-        }
-        else {
-            new[j] = original[i];
-            j++;
-        }
-    }
-}
-
-/*
-add an item to an array where n is the size of original
-*/
-void _add(int* original, int* new, int item, int n) {
-    int i;
-    for (i = 0; i < n; i++) {
-        new[i] = original[i];
-    }
-    new[i] = item;
-}
-
-/*
-copy an array of size n
-*/
-void _copy(int* original, int* new, int n) {
-    for (int i = 0; i < n; i++) {
-        new[i] = original[i];
-    }
 }
 
 /*
@@ -118,6 +57,7 @@ void _get_cities(int argc, char* argv[], city* cities) {
                 cities[i-1] = make_city(first_num, second_num);
             } else {
                 printf("Invalid format for string %d\n", i);
+                printf("1");
             }
         } else {
             printf("Invalid format for string %d\n", i);
@@ -125,100 +65,77 @@ void _get_cities(int argc, char* argv[], city* cities) {
     }
 }
 
-/*
-given an array make its elements 0-(n-1)
-*/
-void _range(int* arr, int n){
-    for (int i = 0; i < n; i++) {
-        arr[i] = i;
+
+double get_distance(city c1, city c2)
+{
+    return pow(pow(c1.x - c2.x, 2) + pow(c1.y - c2.y, 2), .5);
+}
+
+void get_distances(double *distances, city *cities, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            double dist = get_distance(cities[i], cities[j]);
+            distances[(i * n) + j] = dist;
+        }
+    }
+}
+
+void print_distances(double *distances, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%f ", distances[(i * n) + j]);
+        }
+        printf("\n\n");
     }
 }
 
 /*
-The recursive tsp function 
-This uses a method called backtracking,
+code for random cities
 */
-void tsp_helper(double* distances, double* rdistance, int* rpath, double curr_distance, int* curr_path, int cc, int fc, int* avail_cities, int n, int depth) {
-   int ac_len = n-(depth+1);
-   if (ac_len == 0) {
-       *rdistance = curr_distance + distances[(cc*n)+fc];
-       _copy(curr_path, rpath, n);
-       return;
-   }
-
-   double s_d_sofar = -1.0;
-   int s_p_sofar[n];
-   
-   for (int i = 0; i < ac_len; i++) {
-      int ac = avail_cities[i];
-      double new_dist = curr_distance + distances[(cc*n)+ac];
-      int new_ac[ac_len-1];
-      _remove(avail_cities, new_ac, ac, ac_len);
-      int new_path[depth+1];
-      _add(curr_path, new_path, ac, depth);
-      double best_distance;
-      int best_path[n];
-      tsp_helper(distances, &best_distance, best_path, new_dist, new_path, ac, fc, new_ac, n, depth+1);
-      if ((s_d_sofar == -1.0) || (best_distance < s_d_sofar)) {
-          s_d_sofar = best_distance;
-          _copy(best_path, s_p_sofar, n);
-      }
-   }
-   *rdistance = s_d_sofar;
-   _copy(s_p_sofar, rpath, n);
-}
-
-
-/*
-given n city coordinates
-return the shortest path and the distance of that path
-*/
-void tsp(double* distance, int* path, city* cities, int n) {
-    double distances[n*n];
-    get_distances(distances, cities, n);
-
-    int c[n];
-    _range(c, n);
-    int avail_cities[n-1];
-    _remove(c, avail_cities, 0, n);
-    int path_so_far[n];
-    _range(path_so_far, n); 
-
-    tsp_helper(distances, distance, path, 0, path_so_far, 0, 0, avail_cities, n, 0);
-    path[n-1] = 0;
-}
 
 /*
 check whether or not a city is withing the threshold distance of
 the other cities
 */
-int within_range(city* cities, int n, city c, double threshold) {
-    for (int i = 0; i < n; i++) {
+int within_range(city *cities, int n, city c, double threshold)
+{
+    for (int i = 0; i < n; i++)
+    {
         double dist = get_distance(c, cities[i]);
-        if (dist < threshold) {
+        if (dist < threshold)
+        {
             return 1;
         }
     }
     return 0;
 }
 
-
 /*
 creates random cities and stores them in the cities array
 if the cities are withing a certain distance of one another,
 create another random city and try again
 */
-void random_cities(city* cities, int n, double threshold) {
+void random_cities(city *cities, int n, double threshold)
+{
     srand(time(NULL));
     int x, y, in_range;
     city c;
-    for (int i = 0; i < n; i++) {
-        while (1) {
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
             x = rand();
             y = rand();
             c = make_city(x, y);
             in_range = within_range(cities, i, c, threshold);
-            if (in_range == 0) {
+            if (in_range == 0)
+            {
                 break;
             }
         }
@@ -226,14 +143,181 @@ void random_cities(city* cities, int n, double threshold) {
     }
 }
 
-
 /*
 receive the number of cities that the user wants
 */
-int input_random_cities() {
+int input_random_cities()
+{
     int number;
     printf("Enter an integer: ");
     scanf("%d", &number);
     return number;
 }
 
+/*
+bit operation functions
+*/
+
+/*
+set available cities where each bit represents if a city
+has been visited or not. A bit of:
+    1 represents a city being available to visit
+    0 represents a city not being avaiable to visit
+*/
+unsigned int set_available_cities(unsigned int n)
+{
+    int ret = 0;
+    for (int i = 1; i < n; i++)
+    {
+        ret |= (1 << i);
+    }
+    return ret;
+}
+
+/*
+mark city as visited
+*/
+unsigned int mark(unsigned int n, unsigned int position)
+{
+    unsigned int mask = ~(1 << position);
+    unsigned int new_n = n & mask;
+    return new_n;
+}
+
+void printBinary(unsigned int num)
+{
+    for (int i = 31; i >= 0; i--)
+    {
+        printf("%d", (num >> i) & 1);
+    }
+    printf(" (%u)\n", num);
+}
+
+void print_memo(double **memo, int cc, int ac)
+{
+    for (int i = 0; i < cc; i++)
+    {
+        for (int j = 0; j < ac; j++)
+        {
+            printf("%f, ", memo[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+double **make_memo(int cc, int ac)
+{
+    double **memo = (double **)malloc(cc * sizeof(double *));
+    for (int i = 0; i < cc; i++)
+    {
+        memo[i] = (double *)malloc(ac * sizeof(double));
+        for (int j = 0; j < ac; j++)
+        {
+            memo[i][j] = 0.0;
+        }
+    }
+    return memo;
+}
+
+// global variables for the tsp and tsp_helper functions below
+double best_so_far;
+int fc = 0;        // first city will always have an id of 0
+double *distances; // distance matrix for each city
+int n;             // number of cities
+double **memo;
+double **memo_path;
+
+/*
+The dynamic programming tsp function
+This uses bit masking
+*/
+double tsp_helper(unsigned int cc, unsigned int ac)
+{
+    if (ac == 0)
+    {
+        memo[cc][0] = distances[(cc * n) + 0];
+        return distances[(cc * n) + 0];
+    }
+    if (memo[cc][ac] != 0)
+    {
+        return memo[cc][ac];
+    }
+    double best_dist = -1;
+    double next_city = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (ac & (1 << i))
+        {
+            int new_ac = mark(ac, i);
+            double potential_best = tsp_helper(i, new_ac) + distances[(cc * n) + i];
+            if ((best_dist == -1) || (potential_best < best_dist))
+            {
+                best_dist = potential_best;
+                next_city = i;
+            }
+        }
+    }
+    memo_path[cc][ac] = next_city;
+    memo[cc][ac] = best_dist;
+    return best_dist;
+}
+
+
+void get_path(int *path) {
+    int cc = 0;
+    int ac = set_available_cities(n);
+    path[0] = 0;
+    for (int i = 1; i < n; i++)
+    {
+        cc = memo_path[cc][ac];
+        path[i] = cc;
+        ac = mark(ac, cc);
+    }
+}
+
+void print_array(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        if (i < n-1) {
+            printf("%d, ", arr[i]);
+        }
+        else {
+            printf("%d\n", arr[i]);
+        }
+    }
+}
+
+void print_path()
+{
+    int cc = 0;
+    int ac = set_available_cities(n);
+    printf("0 -> ");
+    for (int i = 0; i < n - 1; i++)
+    {
+        cc = memo_path[cc][ac];
+        printf("%d -> ", cc);
+        ac = mark(ac, cc);
+    }
+    printf("0\n");
+}
+
+/*
+given n city coordinates
+return the shortest path and the distance of that path
+*/
+void tsp(double *rdistance, int *rpath, city *cities, int num_cities)
+{
+    // set globals
+    best_so_far = DBL_MAX;
+    n = num_cities;
+    double d[n * n];
+    distances = d;
+    get_distances(distances, cities, n);
+    memo = (double **)make_memo(n, 1 << n);
+    memo_path = (double **)make_memo(n, 1 << n);
+
+    unsigned int available_cities = set_available_cities(n);
+    unsigned int current_city = 0;
+    double distance = tsp_helper(current_city, available_cities);
+    get_path(rpath);
+    *rdistance = distance;
+}

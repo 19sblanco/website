@@ -76,6 +76,9 @@
         const ctx = canvas.getContext("2d");
 
         function validateInput() {
+            const min_cities = 1;
+            const max_cities = 20;
+
             const cityCountInput = document.getElementById('cityCount');
             const errorMessage = document.getElementById('errorMessage');
             const cityCount = parseInt(cityCountInput.value);
@@ -85,8 +88,8 @@
                 return false;
             }
 
-            if (cityCount < 2 || cityCount > 14) {
-                errorMessage.textContent = "Please enter a number between 2 and 14.";
+            if (cityCount < min_cities || cityCount > max_cities) {
+                errorMessage.textContent = `Please enter a number between ${min_cities} and ${max_cities}.`;
                 return false;
             }
 

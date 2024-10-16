@@ -65,37 +65,23 @@ int almost_equal(double a, double b) {
     }
     else return 0;
 }
+
+void assert_equal(int n, double expected, double got, int *rpath, int path_len) {
+    printf("=== %d ===\n", n);
+    if (almost_equal(expected, got)) {
+        printf("success!\n");
+        print_array(rpath, path_len);
+        // printf("success!:\nexpected: %f\ngot: %f\n", expected, got);
+    } else {
+        printf("fail:\nexpected: %f\ngot: %f\n", expected, got);
+    }
+    printf("===  ===\n");
+
+}
 /*
 helper functions
 ////////////////////////////////////
 */
-
-void test_remove_1() {
-    printf("=== removing 3 ===\n");
-    int n = 5;
-    int arr[n];
-    _range(arr, n);
-    int new_arr[n-1];
-    _remove(arr, new_arr, 3, n);
-    print_array(arr, n);
-    print_array(new_arr, n-1);
-    printf("=== ===\n");
-}
-
-void test_remove_2() {
-    printf("=== removing 1,2 ===\n");
-    int n = 5;
-    int arr[n];
-    _range(arr, n);
-    int new_arr0[n-1];
-    int new_arr1[n-2];
-    _remove(arr, new_arr0, 1, n);
-    _remove(new_arr0, new_arr1, 2, n-1);
-    print_array(arr, n);
-    print_array(new_arr0, n-1);
-    print_array(new_arr1, n-2);
-    printf("=== ===\n");
-}
 
 void test_almost_equal() {
     printf("=== almost equal===\n");
@@ -111,58 +97,11 @@ void test_almost_equal() {
     printf("=== ===\n");
 }
 
-void test_add_1() {
-    printf("=== adding 3 ===\n");
-    int n = 5;
-    int arr[n];
-    _range(arr, n);
 
-
-    // void _add(int* original, int* new, int item, int n) {
-
-
-    /// int* newarr = arr_add(arr, n, 3);
-    int new_arr[n+1];
-    _add(arr, new_arr, 3, n);
-
-
-
-    ///
-    print_array(arr, n);
-    print_array(new_arr, n+1);
-    printf("=== ===\n");
-}
-
-void test_cp_int_array_1() {
-    printf("=== copy 0 elements ===\n");
-    int n = 0;
-    int arr[n];
-    _range(arr, n);
-    int newarr[n];
-    _copy(arr, newarr, n);
-    print_array(arr, n);
-    print_array(newarr, n);
-    printf("=== ===\n");
-}
-
-void test_equals_1() {
-    printf("=== test 2 array equal ===\n");
-    int n = 5;
-    int arr1[n];
-    _range(arr1, n);
-    int arr2[n];
-    _range(arr2, n);
-    if (arr_equal(arr1, arr2, n) == 1) {
-        printf("success!\n");
-    }
-    else {
-        printf("fail!\n");
-    }
-    printf("=== ===\n");
-}
-
+/*
+tsp tests
+*/
 void test_tsp_1() {
-    printf("=== tsp1 ===\n");
     int n = 3;
     double true_distance = 12.0;
     city cities[n];
@@ -173,19 +112,11 @@ void test_tsp_1() {
     int rpath[n];
     tsp(&rdistance, rpath, cities, n);
 
-    if (rdistance == true_distance) {
-        printf("success!\n");
-    }
-    else {
-        printf("fail!\n");
-    }
-    printf("12.0 != %f\n", rdistance);
-    printf("=== ===\n");
+    assert_equal(1, true_distance, rdistance, rpath, n);
 }
 
 
 void test_tsp_2() {
-    printf("=== tsp2 ===\n");
     int n = 4;
     double true_distance = 3 + 6 + pow(97, .5) + 4;
     city cities[n];
@@ -197,18 +128,11 @@ void test_tsp_2() {
     int rpath[n];
     tsp(&rdistance, rpath, cities, n);
 
-    if (rdistance == true_distance) {
-        printf("success!\n");
-    }
-    else {
-        printf("fail!\n");
-    }
-    printf("=== ===\n");
+    assert_equal(2, true_distance, rdistance, rpath, n);
 }
 
 
 void test_tsp_3() {
-    printf("=== tsp3 ===\n");
     int n = 4;
     city cities[n];
     cities[0] = make_city(0.0, 0.0);
@@ -220,18 +144,11 @@ void test_tsp_3() {
     int rpath[n];
     tsp(&rdistance, rpath, cities, n);
 
-    if (rdistance == true_distance) {
-        printf("success!\n");
-    }
-    else {
-        printf("fail!\n");
-    }
-    printf("=== ===\n");
+    assert_equal(3, true_distance, rdistance, rpath, n);
 }
 
 
 void test_tsp_4() {
-    printf("=== tsp4 ===\n");
     int n = 3;
     double true_distance = 0;
     city cities[n];
@@ -242,17 +159,10 @@ void test_tsp_4() {
     int rpath[n];
     tsp(&rdistance, rpath, cities, n);
 
-    if (rdistance == true_distance) {
-        printf("success!\n");
-    }
-    else {
-        printf("fail!\n");
-    }
-    printf("=== ===\n");
+    assert_equal(4, true_distance, rdistance, rpath, n);
 }
 
 void test_tsp_5() {
-    printf("=== tsp5 ===\n");
     int n = 5;
     city cities[n];
     cities[0] = make_city(0.0, 0.0);
@@ -265,13 +175,28 @@ void test_tsp_5() {
     tsp(&rdistance, rpath, cities, n);
 
     double true_distance = 24.831310;
-    if (almost_equal(rdistance, true_distance) == 1) {
-        printf("success!\n");
-    }
-    else {
-        printf("fail!\n");
-    }
-    printf("=== ===\n");
+    assert_equal(5, true_distance, rdistance, rpath, n);
+}
+
+void test_tsp_6() {
+    int n = 10;
+    city cities[n];
+    cities[0] = make_city(0.0, 0.0);
+    cities[1] = make_city(0.0, 1.0);
+    cities[2] = make_city(0.0, 2.0);
+    cities[3] = make_city(0.0, 3.0);
+    cities[4] = make_city(0.0, 4.0);
+    cities[5] = make_city(0.0, 5.0);
+    cities[6] = make_city(0.0, 6.0);
+    cities[7] = make_city(0.0, 7.0);
+    cities[8] = make_city(0.0, 8.0);
+    cities[9] = make_city(0.0, 9.0);
+    double rdistance = 0.0;
+    int rpath[n];
+    tsp(&rdistance, rpath, cities, n);
+    
+    double true_distance = 18.0;
+    assert_equal(6, true_distance, rdistance, rpath, n);
 }
 
 void test_tsp_memory() {
@@ -307,21 +232,7 @@ void test_tsp_memory() {
     tsp(&rdistance, rpath, cities, n);
     printf("sucess!\n");
     printf("=== ===\n");
-
 }
-
-void random_cities_1() {
-    printf("=== random cities 1 ===\n");
-    int n = 5;
-    double threshold = .01;
-    int order[n];
-    _range(order, n);
-    city cities[n];
-    random_cities(cities, n, threshold);
-    print_cities(cities, order, n);
-    printf("=== ===\n");
-}
-
 
 
 int main() {
@@ -330,12 +241,6 @@ int main() {
     test_tsp_3();
     test_tsp_4();
     test_tsp_5();
-    test_remove_1();
-    test_remove_2();
-    test_almost_equal();
-    test_add_1();
-    test_cp_int_array_1();
-    test_equals_1();
-    random_cities_1();
+    test_tsp_6();
     // test_tsp_memory();
 }

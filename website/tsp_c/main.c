@@ -5,28 +5,6 @@
 
 
 /*
-tsp_C:
-  tsp written in python
-    cities: 12
-    time: 808.4938039779663
-
-  tsp written in C (on heap)
-    cities: 12
-    time: 23.480295
-    cities: 13
-    time: 265.090176
-
-  tsp written in C (on stack)
-    cities: 12
-    time: 13.547940
-    cities:13
-    time: 221.827008
-*/
-
-
-
-
-/*
 traveling salesman 
 n - number of cities (make sure get cities matches this)
 */
@@ -39,11 +17,11 @@ int main(int argc, char* argv[]) {
     int n = argc-1; // -1 to account for program name as argument
 
     clock_t start, end;
-    start = clock();
     city cities[n];
     _get_cities(argc, argv, cities);
     double rdistance = 0.0;
     int rpath[n];
+    start = clock();
     tsp(&rdistance, rpath, cities, n);
     end = clock();
 
