@@ -95,11 +95,6 @@ body {
     text-align: center;
 }
 
-#tspCanvas {
-    display: block;
-    margin: 0 auto;
-}
-
 footer {
     text-align: center;
     padding: 10px;
@@ -123,7 +118,40 @@ body {
 }
 
 /* tsp */
-#tspCanvas {
+.canvas-container {
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
     background-color: white;
-    border: 1px solid #000000;
+    border: 2px solid black;
+}
+
+.demo-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.demo-controls label,
+.demo-controls input,
+.demo-controls button {
+    margin: 5px;
+}
+
+.results-container {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#errorMessage {
+    text-align: center;
+    color: red;
+    margin-top: 10px;
 }
