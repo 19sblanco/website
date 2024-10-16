@@ -34,7 +34,8 @@
             <p>
                 This is an interactive demo of my optimized implimentation of the Traveling Salesman project
                 written in C. For this project I implimented 4 different optimizations, if you are interested
-                in reading more about each of these I encourage you to visit its <a href="https://github.com/19sblanco/tsp_c">GitHub</a>.
+                in reading more about each of these I encourage you to visit its <a
+                    href="https://github.com/19sblanco/tsp_c">GitHub</a>.
                 There is also information about the speed up between each of the versions.
             </p>
             <p>
@@ -52,19 +53,21 @@
                 <li>View results below demo!</li>
             </ol>
             <h2>Interactive Demo</h2>
-            <canvas id="tspCanvas" width="600" height="500"></canvas>
-            <div class="demo-controls">
-                <label for="cityCount">Cities (1-20):</label>
-                <input type="number" id="cityCount" min="1" max="20" placeholder="Enter a number">
-                <button onclick="showRandomCities()">Generate cities</button>
-                <button onclick="showShortestPath()">Show shortest path</button>
-                <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+            <div class="canvas-container">
+                <canvas id="tspCanvas" width="600" height="500"></canvas>
+                <div class="demo-controls">
+                    <label for="cityCount">Cities (1-20):</label>
+                    <input type="number" id="cityCount" min="1" max="20" placeholder="Enter a number">
+                    <button onclick="showRandomCities()">Generate cities</button>
+                    <button onclick="showShortestPath()">Show shortest path</button>
+                    <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+                </div>
+                <div id="results" class="results-container" style="display: none;">
+                    <p>Shortest Path Distance (in pixels): <span id="distanceResult"></span></p>
+                    <p>CPU Time: <span id="cpuTimeResult"></span> seconds</p>
+                </div>
+                <p id="errorMessage"></p>
             </div>
-            <div id="results" class="results-container" style="display: none;">
-                <p>Shortest Path Distance (in pixels): <span id="distanceResult"></span></p>
-                <p>CPU Time: <span id="cpuTimeResult"></span> seconds</p>
-            </div>
-            <p id="errorMessage"></p>
         </div>
     </div>
 
