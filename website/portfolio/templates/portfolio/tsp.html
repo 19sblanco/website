@@ -12,7 +12,6 @@
 <body>
     <nav class="navbar">
         <ul>
-
             <li><a href="/">Home</a></li>
             <li><a href="https://github.com/19sblanco/" target="_blank">GitHub</a></li>
             <li><a href="www.linkedin.com/in/steven-blanco-b69553199" , target="_blank">LinkedIn</a></li>
@@ -33,35 +32,39 @@
         <div class="main-content">
             <h2>Description</h2>
             <p>
-                This is an interactive demo of my implimentation of the Traveling Salesman project
-                written in C. I created various versions, they can all be seen on my github page.
-                To see my github page look at the navigation bar at the top of the screen. 
+                This is an interactive demo of my optimized implimentation of the Traveling Salesman project
+                written in C. For this project I implimented 4 different optimizations, if you are interested
+                in reading more about each of these I encourage you to visit its <a href="https://github.com/19sblanco/tsp_c">GitHub</a>.
+                There is also information about the speed up between each of the versions.
+            </p>
+            <p>
+                For the purposes of this demo I'm only showcasing the fastest version that was implimented using
+                dynamic programming and bitmasking. This provided a significant speed up from the previous versions
+                that used backtracking and even a naive approach.
             </p>
 
             <h2>Demo</h2>
             <ol>
-                <li>On the right hand side, navigate to "Cities (2-14):" and pick the number of random cities.</li>
+                <li>Under the "Interactive Demo" section, enter the number of cities you want</li>
                 <li>Click on "Generate cities" to randomly generate and display the random cities.</li>
-                <li>Click "Show shortest path" to calculate the shortest path using the traveling salesman
-                    algorithm.</li>
+                <li>Click "Show shortest path" to calculate the shortest path using the traveling salesman algorithm.
+                </li>
                 <li>View results below demo!</li>
-
-                <h2>Interactive Demo</h2>
-                <canvas id="tspCanvas" width="600" height="500"></canvas>
-                <div class="demo-controls">
-                    <label for="cityCount">Cities (1-20):</label>
-                    <input type="number" id="cityCount" min="1" max="20" placeholder="Enter a number">
-                    <button onclick="showRandomCities()">Generate cities</button>
-                    <button onclick="showShortestPath()">Show shortest path</button>
-                    <div id="loadingSpinner" class="spinner" style="display: none;"></div>
-                </div>
-                <div id="results" class="results-container" style="display: none;">
-                    <p>Shortest Path Distance (in pixels): <span id="distanceResult"></span></p>
-                    <p>CPU Time: <span id="cpuTimeResult"></span> seconds</p>
-                </div>
-                <p id="errorMessage"></p>
             </ol>
-
+            <h2>Interactive Demo</h2>
+            <canvas id="tspCanvas" width="600" height="500"></canvas>
+            <div class="demo-controls">
+                <label for="cityCount">Cities (1-20):</label>
+                <input type="number" id="cityCount" min="1" max="20" placeholder="Enter a number">
+                <button onclick="showRandomCities()">Generate cities</button>
+                <button onclick="showShortestPath()">Show shortest path</button>
+                <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+            </div>
+            <div id="results" class="results-container" style="display: none;">
+                <p>Shortest Path Distance (in pixels): <span id="distanceResult"></span></p>
+                <p>CPU Time: <span id="cpuTimeResult"></span> seconds</p>
+            </div>
+            <p id="errorMessage"></p>
         </div>
     </div>
 
