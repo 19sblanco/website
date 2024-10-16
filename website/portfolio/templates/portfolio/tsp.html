@@ -44,7 +44,7 @@
                 that used backtracking and even a naive approach.
             </p>
 
-            <h2>Demo</h2>
+            <h2>Instructions</h2>
             <ol>
                 <li>Under the "Interactive Demo" section, enter the number of cities you want</li>
                 <li>Click on "Generate cities" to randomly generate and display the random cities.</li>
@@ -52,7 +52,7 @@
                 </li>
                 <li>View results below demo!</li>
             </ol>
-            <h2>Interactive Demo</h2>
+            <h2>Demo</h2>
             <div class="canvas-container">
                 <canvas id="tspCanvas" width="600" height="500"></canvas>
                 <div class="demo-controls">
@@ -60,7 +60,7 @@
                     <input type="number" id="cityCount" min="1" max="20" placeholder="Enter a number">
                     <button onclick="showRandomCities()">Generate cities</button>
                     <button onclick="showShortestPath()">Show shortest path</button>
-                    <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+                    <div id="loadingSpinner" class="spinner"></div>
                 </div>
                 <div id="results" class="results-container" style="display: none;">
                     <p>Shortest Path Distance (in pixels): <span id="distanceResult"></span></p>
