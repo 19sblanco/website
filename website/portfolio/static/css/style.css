@@ -1,24 +1,29 @@
 :root {
-    --nav-bar-height: 20px;
-    --side-bar-width: 400px;
-    --content-max-width: 1000px; /* Adjust this value as needed */
+    --nav-bar-height: 60px;
+    --side-bar-width: 160px;
+    --content-max-width: 1000px;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
     background-color: bisque;
+    min-height: 100vh; /* Ensure minimum height of 100% of viewport */
 }
 
 /* Navigation Bar */
+.navbar {
+    height: var(--nav-bar-height);
+    min-height: var(--nav-bar-height);
+}
+
 .navbar ul {
     list-style-type: none;
-    padding: var(--nav-bar-height); 
     margin: 0;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    align-items: center;
     background-color: burlywood;
+    height: 100%;
 }
 
 .navbar li {
@@ -43,16 +48,10 @@ body {
     display: flex;
 }
 
-/* Inner Content Container */
-.content-inner {
-    display: flex;
-    max-width: var(--content-max-width);
-    width: 100%;
-}
-
 /* Side Bar */
 .sidebar {
     width: var(--side-bar-width);
+    min-width: var(--side-bar-width);
     background-color: rgb(241, 207, 161);
     padding: 20px;
 }
@@ -66,7 +65,6 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    text-align: left;
 }
 
 .sidebar li {
@@ -76,13 +74,17 @@ body {
 .sidebar a {
     text-decoration: none;
     color: black;
+    transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #cbd5e0;
 }
 
 /* main-content Section */
 .main-content {
-    flex-grow: 1;
-    padding: 20px;
-    border-radius: 5px
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .main-content h1 {
@@ -102,6 +104,22 @@ footer {
     text-align: center;
     padding: 10px;
     background-color: burlywood;
+}
+
+/* Ensure the content area takes up all available vertical space */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
 }
 
 /* tsp */
