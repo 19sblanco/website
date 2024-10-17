@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.index, name="index"),
     path("tsp/", views.tsp, name="tsp"),
-    path("tsp_c", views.tsp_c, name="tsp_c")
+    path("tsp_c", views.tsp_c, name="tsp_c"),
+    path("boolean_eval", views.boolean_eval, name="boolean_eval")
 ]

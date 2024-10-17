@@ -14,6 +14,10 @@ def tsp(request):
     context = {}
     return render(request, "portfolio/tsp.html", context)
 
+def boolean_eval(request):
+    context = {}
+    return render(request, "portfolio/boolean_eval.html", context)
+
 """
 call "main" which is the traveling salesman problem written in C
 "main" will output the shortest path, distance, and cpu_time in json format

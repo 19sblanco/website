@@ -1,6 +1,8 @@
 start:
-    tsp:
-        * allow users to click on canvas and make a city
+    refactor: 
+        * resuse navbar and sidebar code, you need a base.html file
     boolean eval:
         * user enters in a text file
         * you eval it
+    tsp:
+        * allow users to click on canvas and make a city
