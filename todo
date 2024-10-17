@@ -1,3 +1,6 @@
 start:
-    * update numbers for new version
-    * make an enter activate generate cities
+    tsp:
+        * allow users to click on canvas and make a city
+    boolean eval:
+        * user enters in a text file
+        * you eval it

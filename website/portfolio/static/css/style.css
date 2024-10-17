@@ -1,7 +1,7 @@
 :root {
     --nav-bar-height: 60px;
     --side-bar-width: 160px;
-    --content-max-width: 1000px;
+    --content-max-width: 1100px;
 }
 
 body {
@@ -83,8 +83,8 @@ body {
 
 /* main-content Section */
 .main-content {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .main-content h1 {
@@ -169,4 +169,23 @@ canvas {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+
+.wiki_page_container {
+    width: 100%;
+    max-width: 600px; /* Adjust this value to set the maximum width of the container */
+    margin: 0 auto;
+}
+
+.wiki_page {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tidbit {
+    margin: 500;
+    margin-top: 500;
+    text-align: center;
 }
